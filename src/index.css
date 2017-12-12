@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #5E9387
+}
+
+.theremin {
+  z-index: 1000;
+  margin: auto;
+  margin-top: 20px;
+  width: 400px;
+  height: 400px;
+  background-color: #C8E29D
+}
+
+.App {
+  position: relative;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+}
+
+.label {
+  color: white;
+  text-transform: uppercase;
+  font-size: 30px;
+  position: relative;
+}
+
+.volume {
+  transform: rotate(-90deg);
+  transform-origin: left top 0;
+  left: -10px;
+  top: -90px;
+  width: 200px;
+  height: 50px;
+}
+
+.pitch {
+  left: 0px;
+  top: -40px;
+}
+
+.sine {
+  margin: 0 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}

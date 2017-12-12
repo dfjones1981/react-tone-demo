@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red173\green173\blue173;\red30\green33\blue39;\red214\green85\blue98;
+\red155\green162\blue177;\red197\green136\blue83;}
+{\*\expandedcolortbl;;\cssrgb\c73333\c73333\c73333;\cssrgb\c15686\c17255\c20392;\cssrgb\c87843\c42353\c45882;
+\cssrgb\c67059\c69804\c74902;\cssrgb\c81961\c60392\c40000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ONE:\
+\
+Code overview.\
+Render method - what\'92s going on in the component\
+Eliminate time in code, just snapshots in time. Think like a designer. Look at state, look at render method and predict what it should look like (or sound like).\
+Instead of declaring state we\'92re accumulating state\
+\
+Is the sound playing?\
+No state, thinking about time, responding to user events\
+Let\'92s eliminate time by declaring state.\
+\
+TWO\
+\
+Introduce state\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2   \cf4 \strokec4 state\cf2 \strokec2  \cf5 \strokec5 =\cf2 \strokec2  \{\cb1 \
+\cb3     \cf4 \strokec4 isPlaying\cf2 \strokec2 : \cf6 \strokec6 false\cf2 \strokec2 ,\cb1 \
+\cb3     \cf4 \strokec4 pitch\cf2 \strokec2 : \cf6 \strokec6 0.5\cf2 \strokec2 ,\cb1 \
+\cb3     \cf4 \strokec4 volume\cf2 \strokec2 : \cf6 \strokec6 0.25\cf2 \cb1 \strokec2 \
+\cb3   \}\cb1 \
+Call this.setState() instead of imperative method calls\
+State now updated, but no sound\
+\
+THREE\
+\
+Gather imperative calls into one function doImperativeStuff\
+now we can respond to changes in state\'85 or react to changes!\
+Call imperative stuff when ComponentDidUpdate\
+ComponentDidUpdate is called whenever we call setState (once it\'92s updated the DOM)\
+Also need to do imperative stuff when ComponentDidMount, which is called when the component is initially rendered\
+We\'92ve reacted to state, we\'92ve eliminated time.\
+\
+FOUR\
+What does that mean.\
+Instead of having to mouse in and out to play sounds, we can just change state. \
+Eliminate time helps debug and design UI\
+Wrapping imperative code like this is useful, as we don\'92t have an oscillator component. Or do we?\
+\
+FIVE\
+\
+What if we had a tone component?\
+Extract imperative stuff into Tone component, state is now props\
+You can see the render method describes what\'92s happening in the component better now, there is a tone.\
+And with components, comes composition. 2 tones, 3 tones.\
+How much code would we have needed to add if wanted to add multiple tones with the old imperative approach? Much more than this.\
+If you know react, you know how to use this component, don\'92t need to learn the api of the oscillator.\
+\
+SIX\
+Declarative means you can compose,\
+Components mean you can compose, render other components with the same state. SineWave}
