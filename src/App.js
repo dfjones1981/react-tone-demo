@@ -4,15 +4,9 @@ import Oscillator from './oscillator';
 
 // import SineWave from './other/SineWave';
 
-class App extends Component {
+class Tone extends Component {
 
   oscillator = new Oscillator();
-
-  state = {
-    isPlaying: false,
-    pitch: 0.5,
-    volume: 0.25
-  }
 
   componentDidUpdate() {
     this.doImperativeStuff();
@@ -23,13 +17,26 @@ class App extends Component {
   }
 
   doImperativeStuff() {
-    if (this.state.isPlaying) {
+    if (this.props.isPlaying) {
     this.oscillator.play();
     } else {
     this.oscillator.stop();
     }
-    this.oscillator.setPitchBend(this.state.pitch);
-    this.oscillator.setVolume(this.state.volume);
+    this.oscillator.setPitchBend(this.props.pitch);
+    this.oscillator.setVolume(this.props.volume);
+  }
+
+  render () {
+    return null;
+  }
+}
+
+class App extends Component {
+
+  state = {
+    isPlaying: false,
+    pitch: 0.5,
+    volume: 0.25
   }
 
   play = () => {
@@ -55,7 +62,9 @@ class App extends Component {
         onMouseEnter={this.play}
         onMouseLeave={this.stop}
         onMouseMove={this.changeTone} />
-     
+        
+        <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch} volume={this.state.volume} />
+
       <div className="label volume">◀ volume ▶</div>
       <div className="label pitch">◀ pitch ▶</div>
     </div>;
