@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Oscillator from './oscillator';
 
-// import SineWave from './other/SineWave';
+import SineWave from './other/SineWave';
 
 class Tone extends Component {
 
@@ -61,12 +61,18 @@ class App extends Component {
       <div className="theremin"
         onMouseEnter={this.play}
         onMouseLeave={this.stop}
-        onMouseMove={this.changeTone} />
-
+        onMouseMove={this.changeTone}>
+       
         <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch} volume={this.state.volume} />
         <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch * 2} volume={this.state.volume * 2} />
         <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch / 2} volume={this.state.volume /2} />
-
+        <SineWave width="400"
+        height="400"
+        frequency={this.state.pitch}
+        amplitude={this.state.volume}
+        draw={this.state.isPlaying} />
+      </div>
+     
       <div className="label volume">◀ volume ▶</div>
       <div className="label pitch">◀ pitch ▶</div>
     </div>;
