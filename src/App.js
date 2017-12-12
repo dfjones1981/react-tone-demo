@@ -62,8 +62,10 @@ class App extends Component {
         onMouseEnter={this.play}
         onMouseLeave={this.stop}
         onMouseMove={this.changeTone} />
-        
+
         <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch} volume={this.state.volume} />
+        <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch * 2} volume={this.state.volume * 2} />
+        <Tone isPlaying={this.state.isPlaying} pitch={this.state.pitch / 2} volume={this.state.volume /2} />
 
       <div className="label volume">◀ volume ▶</div>
       <div className="label pitch">◀ pitch ▶</div>
