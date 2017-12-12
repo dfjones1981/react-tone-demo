@@ -14,6 +14,24 @@ class App extends Component {
     volume: 0.25
   }
 
+  componentDidUpdate() {
+    this.doImperativeStuff();
+  }
+
+  componentDidMount() {
+    this.doImperativeStuff();
+  }
+
+  doImperativeStuff() {
+    if (this.state.isPlaying) {
+    this.oscillator.play();
+    } else {
+    this.oscillator.stop();
+    }
+    this.oscillator.setPitchBend(this.state.pitch);
+    this.oscillator.setVolume(this.state.volume);
+  }
+
   play = () => {
     this.setState({ isPlaying: true});
   }
