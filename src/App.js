@@ -8,14 +8,18 @@ class App extends Component {
 
   oscillator = new Oscillator();
 
+  state = {
+    isPlaying: false,
+    pitch: 0.5,
+    volume: 0.25
+  }
+
   play = () => {
-    this.oscillator.play();
-   
+    this.setState({ isPlaying: true});
   }
 
   stop = () => {
-   this.oscillator.stop();
-    
+    this.setState({ isPlaying: false})
   }
 
   changeTone = (event) => {
@@ -24,8 +28,7 @@ class App extends Component {
     const pitch = (clientX - left) / (right - left);
     const volume = 1 - (clientY - top) / (bottom - top);
     
-   this.oscillator.setPitchBend(pitch);
-   this.oscillator.setVolume(volume);
+    this.setState({ pitch, volume});
   }
 
   render() {
